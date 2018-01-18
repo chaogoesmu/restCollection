@@ -3,7 +3,15 @@ const app = express()
 const port = process.env.PORT || 3000
 const bodyParser = require('body-parser')
 const uuid = require('uuid/v4')
+const url = require('url');
 
+function fullUrl(req) {
+  return url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
+  });
+}
 
 
 let uuid2 = ()=>{
@@ -16,15 +24,18 @@ let uuid2 = ()=>{
     returnUUID = uuid();
   }
 }
+
 let verifyInt = (x)=>x==parseInt(x)?parseInt(x):false;
+const album = [];
 const collection = [];
 const whatWeAreCollecting = "ahdunnos";
+//TODO:use closure to store the variable, pull everything into a function that allows this, call it from another link, eventually have it store anything with a function.
+
 
 app.use(bodyParser.json());
 
-app.get('/', (req,res)={
-  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  return res.status(200).send(`<a href=${fullUrl}>Currently Collecting: ${whatWeAreCollecting}</a>`)
+app.get('/', (req,res)=>{
+  return res.status(200).send(`<a href=${fullUrl(req)}/${whatWeAreCollecting}>Currently Collecting: ${whatWeAreCollecting}</a>`)
 })
 
 app.get(`/${whatWeAreCollecting}`, (req, res)=>{
