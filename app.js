@@ -22,6 +22,11 @@ const whatWeAreCollecting = "ahdunnos";
 
 app.use(bodyParser.json());
 
+app.get('/', (req,res)={
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  return res.status(200).send(`<a href=${fullUrl}>Currently Collecting: ${whatWeAreCollecting}</a>`)
+})
+
 app.get(`/${whatWeAreCollecting}`, (req, res)=>{
   let limit = verifyInt(req.query.limit);
   if(!!limit)
