@@ -1,0 +1,27 @@
+{
+  "name": "restCollection",
+  "version": "1.0.0",
+  "description": "haven't decided yet what this is going to be a collection of, when I come up with it I'll let you know.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "NODE_ENV=test mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaogoesmu/restCollection.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chaogoesmu/restCollection/issues"
+  },
+  "homepage": "https://github.com/chaogoesmu/restCollection#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "nodemon": "^1.14.11",
+    "uuid": "^3.2.1"
+  }
+}
